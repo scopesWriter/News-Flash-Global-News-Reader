@@ -1,0 +1,13 @@
+//
+//  Debug.xcconfig
+//  NewsFlash
+//
+//  Created by Bishoy Badie on 26/08/2025.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+// Ignore personal config with secrets *.xcconfig
+
+GNEWS_API_KEY = 419540aeccbdb0913e96179b9012907b

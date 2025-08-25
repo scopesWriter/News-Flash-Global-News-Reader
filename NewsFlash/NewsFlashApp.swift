@@ -5,8 +5,9 @@
 //  Created by Bishoy Badie on 26/08/2025.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
+//import netfox
 
 @main
 struct NewsFlashApp: App {
@@ -23,9 +24,16 @@ struct NewsFlashApp: App {
         }
     }()
 
+    init() {
+        // for the sake of API debugging
+        //#if DEBUG
+          //  NFX.sharedInstance().start()
+        //#endif
+    }
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HeadlinesView()
         }
         .modelContainer(sharedModelContainer)
     }

@@ -29,9 +29,22 @@
 		4927D7F52E5D0DE4008828FD /* NewsFlashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsFlashUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		4927D8132E5D113B008828FD /* Exceptions for "NewsFlash" folder in "NewsFlash" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 4927D7D82E5D0DE2008828FD /* NewsFlash */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		4927D7DB2E5D0DE2008828FD /* NewsFlash */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				4927D8132E5D113B008828FD /* Exceptions for "NewsFlash" folder in "NewsFlash" target */,
+			);
 			path = NewsFlash;
 			sourceTree = "<group>";
 		};
@@ -195,6 +208,9 @@
 			);
 			mainGroup = 4927D7D02E5D0DE2008828FD;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				494648ED2E5D1B2F00C53060 /* XCRemoteSwiftPackageReference "netfox" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4927D7DA2E5D0DE2008828FD /* Products */;
 			projectDirPath = "";
@@ -390,6 +406,8 @@
 		};
 		4927D8002E5D0DE4008828FD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 4927D7DB2E5D0DE2008828FD /* NewsFlash */;
+			baseConfigurationReferenceRelativePath = Configs/Debug.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -399,6 +417,7 @@
 				DEVELOPMENT_TEAM = MG7Z8Q765B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NewsFlash/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +447,7 @@
 				DEVELOPMENT_TEAM = MG7Z8Q765B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NewsFlash/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -448,6 +468,8 @@
 		};
 		4927D8032E5D0DE4008828FD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 4927D7DB2E5D0DE2008828FD /* NewsFlash */;
+			baseConfigurationReferenceRelativePath = Configs/Debug.xcconfig;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -486,6 +508,8 @@
 		};
 		4927D8062E5D0DE4008828FD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 4927D7DB2E5D0DE2008828FD /* NewsFlash */;
+			baseConfigurationReferenceRelativePath = Configs/Debug.xcconfig;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -528,7 +552,7 @@
 				4927D7FE2E5D0DE4008828FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		4927D7FF2E5D0DE4008828FD /* Build configuration list for PBXNativeTarget "NewsFlash" */ = {
 			isa = XCConfigurationList;
@@ -537,7 +561,7 @@
 				4927D8012E5D0DE4008828FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		4927D8022E5D0DE4008828FD /* Build configuration list for PBXNativeTarget "NewsFlashTests" */ = {
 			isa = XCConfigurationList;
@@ -546,7 +570,7 @@
 				4927D8042E5D0DE4008828FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		4927D8052E5D0DE4008828FD /* Build configuration list for PBXNativeTarget "NewsFlashUITests" */ = {
 			isa = XCConfigurationList;
@@ -555,9 +579,20 @@
 				4927D8072E5D0DE4008828FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		494648ED2E5D1B2F00C53060 /* XCRemoteSwiftPackageReference "netfox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kasketis/netfox";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.21.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 4927D7D12E5D0DE2008828FD /* Project object */;
 }
