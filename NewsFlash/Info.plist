@@ -2,6 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>ar</string>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SF Pro AR Display Regular.ttf</string>
+		<string>SF Pro AR Display Semibold.ttf</string>
+	</array>
 	<key>GNEWS_API_KEY</key>
 	<string>$(GNEWS_API_KEY)</string>
 </dict>

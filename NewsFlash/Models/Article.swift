@@ -30,6 +30,13 @@ struct Article: Identifiable, Decodable, Hashable {
     }
 }
 
+// Convenience for List IDs when url is nil
+extension Article {
+    var _idForList: String {
+        url ?? id
+    }
+}
+
 struct ArticlesResponse: Decodable {
     let totalArticles: Int?
     let articles: [Article]

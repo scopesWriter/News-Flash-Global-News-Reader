@@ -105,7 +105,7 @@ final class NewsService: NewsServiceProtocol {
     func search(
         _ query: String,
         language: String = Locale.preferredLanguages.first?.prefix(2).description ?? "en",
-        maximumLimit: Int = 30
+        maximumLimit: Int = 10
     ) async throws -> [Article] {
         let token = try tokenOrThrow()
         let queryItems: [URLQueryItem] = [
@@ -120,6 +120,10 @@ final class NewsService: NewsServiceProtocol {
     /// Validates HTTP status codes and maps them to URLError where appropriate.
     private func check(_ response: URLResponse) throws {
         guard let http = response as? HTTPURLResponse else { return }
+        // Print statusCode and response for debugging
+        print("Response: \(http)")
+        print("Status Code: \(http.statusCode)")
+        
         switch http.statusCode {
         case 200 ... 299: return
         case 401, 403: throw URLError(.userAuthenticationRequired)

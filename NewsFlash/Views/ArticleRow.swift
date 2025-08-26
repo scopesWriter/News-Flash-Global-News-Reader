@@ -28,10 +28,16 @@ struct ArticleRow: View {
             .clipShape(RoundedRectangle(cornerRadius: 8))
             
             VStack(alignment: .leading, spacing: 6) {
-                Text(article.title).font(.headline).lineLimit(2)
+                Text(article.title)
+                    .font(.custom("SF Pro AR Display Semibold", size: 16))
+                    .lineLimit(2)
                 HStack(spacing: 8) {
-                    Text(article.source.name ?? "—").font(.subheadline).foregroundStyle(.secondary)
-                    Text(publishedText(article.publishedAt)).font(.caption).foregroundStyle(.secondary)
+                    Text(article.source.name ?? "—")
+                        .font(.custom("SF Pro AR Display Semibold", size: 14))
+                        .foregroundStyle(.secondary)
+                    Text(publishedText(article.publishedAt))
+                        .font(.custom("SF Pro AR Display Regular", size: 8))
+                        .foregroundStyle(.secondary)
                 }
             }
         }

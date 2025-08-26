@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+  NewsFlash
+
+  Created by Bishoy Badie on 26/08/2025.
+  
+*/
+"search_placeholder" = "ابحث عن الأخبار...";
+"trending_topics" = "الموضوعات الرائجة";
+"no_articles" = "لا مقالات";
+"unable_to_load" = "تعذر تحميل الأخبار";
+"retry" = "إعادة المحاولة";
+"select_article" = "حدد مقالة";
+"choose_headline" = "اختر عنوانًا من القائمة لقراءة المقال بالكامل.";
+"no_articles_available" = "لا توجد مقالات إخبارية متاحة في الوقت الحالي.";
+"no_articles_found" = "لم يتم العثور على مقالات لـ '%@'.";
+"unknown_source" = "المصدر غير معروف";
+"clock_icon" = "الساعة";
+"summary" = "الملخص";
+"content" = "المحتوى";
+"read_full_article" = "اقرأ المقال بالكامل";
+"save" = "حفظ";
+"technology" = "التكنولوجيا";
+"apple" = "أبل";
+"ai" = "الذكاء الاصطناعي";
+"ios" = "نظام iOS";
+"swift" = "سويفت";
+"business" = "الأعمال";
+"science" = "العلوم";
+"health" = "الصحة";
+"sports" = "الرياضة";
+"entertainment" = "الترفيه";
+"politics" = "السياسة";
+"climate" = "المناخ";
+"save_button" = "حفظ";
+"share_button" = "مشاركة";
+"news_flash" = "نيوز فلاش";

@@ -10,4 +10,4 @@
 
 // Ignore personal config with secrets *.xcconfig
 
-GNEWS_API_KEY = 419540aeccbdb0913e96179b9012907b
+GNEWS_API_KEY = 65f21b85092870c7562a2bd086f407d6

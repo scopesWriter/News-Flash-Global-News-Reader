@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		49AB844B2E5DF44B003735BB /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = 49AB844A2E5DF44B003735BB /* netfox */; };
+		49AB844D2E5DF44B003735BB /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 49AB844C2E5DF44B003735BB /* SDWebImageSwiftUI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		4927D7EC2E5D0DE4008828FD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49AB844D2E5DF44B003735BB /* SDWebImageSwiftUI in Frameworks */,
+				49AB844B2E5DF44B003735BB /* netfox in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +98,7 @@
 				4927D7DB2E5D0DE2008828FD /* NewsFlash */,
 				4927D7EE2E5D0DE4008828FD /* NewsFlashTests */,
 				4927D7F82E5D0DE4008828FD /* NewsFlashUITests */,
+				49AB84492E5DF44B003735BB /* Frameworks */,
 				4927D7DA2E5D0DE2008828FD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,6 +111,13 @@
 				4927D7F52E5D0DE4008828FD /* NewsFlashUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		49AB84492E5DF44B003735BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +140,8 @@
 			);
 			name = NewsFlash;
 			packageProductDependencies = (
+				49AB844A2E5DF44B003735BB /* netfox */,
+				49AB844C2E5DF44B003735BB /* SDWebImageSwiftUI */,
 			);
 			productName = NewsFlash;
 			productReference = 4927D7D92E5D0DE2008828FD /* NewsFlash.app */;
@@ -205,11 +222,13 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = 4927D7D02E5D0DE2008828FD;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				494648ED2E5D1B2F00C53060 /* XCRemoteSwiftPackageReference "netfox" */,
+				49AAA5502E5DF31200B907EA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4927D7DA2E5D0DE2008828FD /* Products */;
@@ -290,6 +309,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -353,6 +373,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -592,7 +613,28 @@
 				minimumVersion = 1.21.0;
 			};
 		};
+		49AAA5502E5DF31200B907EA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI?tab=readme-ov-file";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		49AB844A2E5DF44B003735BB /* netfox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 494648ED2E5D1B2F00C53060 /* XCRemoteSwiftPackageReference "netfox" */;
+			productName = netfox;
+		};
+		49AB844C2E5DF44B003735BB /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 49AAA5502E5DF31200B907EA /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4927D7D12E5D0DE2008828FD /* Project object */;
 }
