@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   NewsFlash
 
@@ -35,3 +35,8 @@
 "save_button" = "Save";
 "share_button" = "Share";
 "news_flash" = "NewsFlash";
+"missing_api_key" = "Missing or invalid API key. Please check your configuration.";
+"rate_limited" = "Too many requests. Please wait a moment and try again.";
+"network_unavailable" = "No internet connection. Please check your network settings.";
+"invalid_response" = "Invalid response from server. Please try again.";
+

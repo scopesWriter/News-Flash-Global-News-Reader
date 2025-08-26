@@ -12,6 +12,8 @@
 		<string>SF Pro AR Display Regular.ttf</string>
 		<string>SF Pro AR Display Semibold.ttf</string>
 	</array>
+    <key>BASE_URL</key>
+    <string>$(BASE_URL)</string>
 	<key>GNEWS_API_KEY</key>
 	<string>$(GNEWS_API_KEY)</string>
 </dict>

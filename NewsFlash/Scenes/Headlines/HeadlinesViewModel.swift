@@ -30,13 +30,13 @@ final class HeadlinesViewModel: ObservableObject {
         var errorDescription: String? {
             switch self {
             case .missingAPIKey:
-                return "Missing or invalid API key. Please check your configuration."
+                return Localized.missingApiKey
             case .rateLimited:
-                return "Too many requests. Please wait a moment and try again."
+                return Localized.rateLimited
             case .networkUnavailable:
-                return "No internet connection. Please check your network settings."
+                return Localized.networkUnavailable
             case .invalidResponse:
-                return "Invalid response from server. Please try again."
+                return Localized.invalidResponse
             case .generic(let error):
                 return error.localizedDescription
             }
@@ -52,18 +52,18 @@ final class HeadlinesViewModel: ObservableObject {
     // MARK: - Public Properties
     
     let quickTopics: [String] = [
-        NSLocalizedString("technology", comment: "Technology"),
-        NSLocalizedString("apple", comment: "Apple"),
-        NSLocalizedString("ai", comment: "AI"),
-        NSLocalizedString("ios", comment: "iOS"),
-        NSLocalizedString("swift", comment: "Swift"),
-        NSLocalizedString("business", comment: "Business"),
-        NSLocalizedString("science", comment: "Science"),
-        NSLocalizedString("health", comment: "Health"),
-        NSLocalizedString("sports", comment: "Sports"),
-        NSLocalizedString("entertainment", comment: "Entertainment"),
-        NSLocalizedString("politics", comment: "Politics"),
-        NSLocalizedString("climate", comment: "Climate")
+        Localized.technology,
+        Localized.apple,
+        Localized.ai,
+        Localized.ios,
+        Localized.swift,
+        Localized.business,
+        Localized.science,
+        Localized.health,
+        Localized.sports,
+        Localized.entertainment,
+        Localized.politics,
+        Localized.climate
     ]
     
     // MARK: - Private Properties

@@ -11,3 +11,4 @@
 // Ignore personal config with secrets *.xcconfig
 
 GNEWS_API_KEY = 3105f36d2bf3983863151850255206b8
+BASE_URL = gnews.io/api/v4

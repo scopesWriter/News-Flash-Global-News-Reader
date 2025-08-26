@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SDWebImage
 import SDWebImageSwiftUI
 
 struct ArticleDetail: View {
@@ -43,7 +42,7 @@ struct ArticleDetail: View {
                         .frame(width: 36, height: 36)
                         .overlay(
                             Image(systemName: Locale.current.language.languageCode?.identifier == "ar" ? "chevron.right" : "chevron.left")
-                                .font(.custom("SF Pro AR Display Semibold", size: 16))
+                                .font(.semibold(size: 16))
                                 .foregroundColor(.primary)
                         )
                         .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
@@ -109,7 +108,7 @@ struct ArticleDetail: View {
             .frame(height: height)
             .overlay(
                 Image(systemName: "photo")
-                    .font(.custom("SF Pro AR Display Regular", size: 40))
+                    .font(.regular(size: 40))
                     .foregroundColor(.secondary)
             )
     }
@@ -142,7 +141,7 @@ struct ArticleDetail: View {
         VStack(alignment: .leading, spacing: 16) {
             // Article Title
             Text(article.title)
-                .font(.custom("SF Pro AR Display Semibold", size: 24))
+                .font(.semibold(size: 24))
                 .lineLimit(nil)
                 .multilineTextAlignment(.leading)
             
@@ -155,12 +154,12 @@ struct ArticleDetail: View {
                         .frame(width: 24, height: 24)
                         .overlay(
                             Image(systemName: "newspaper")
-                                .font(.system(size: 12, weight: .medium))
+                                .font(.semibold(size: 12))
                                 .foregroundColor(.accentColor)
                         )
                     
-                    Text(article.source.name ?? NSLocalizedString("unknown_source", comment: "Unknown source"))
-                        .font(.custom("SF Pro AR Display Semibold", size: 15))
+                    Text(article.source.name ?? Localized.unknownSource)
+                        .font(.semibold(size: 15))
                         .foregroundColor(.primary)
                 }
                 
@@ -170,11 +169,11 @@ struct ArticleDetail: View {
                 if let date = article.publishedAt {
                     HStack(spacing: 6) {
                         Image(systemName: "clock")
-                            .font(.system(size: 12))
+                            .font(.regular(size: 12))
                             .foregroundColor(.secondary)
                         
                         Text(timeAgoString(from: date))
-                            .font(.custom("SF Pro AR Display Regular", size: 14))
+                            .font(.regular(size: 14))
                             .foregroundColor(.secondary)
                     }
                 }
@@ -192,12 +191,12 @@ struct ArticleDetail: View {
         VStack(alignment: .leading, spacing: 20) {
             if let description = article.description, !description.isEmpty {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(NSLocalizedString("summary", comment: "Summary"))
-                        .font(.custom("SF Pro AR Display Semibold", size: 18))
+                    Text(Localized.summary)
+                        .font(.semibold(size: 18))
                         .foregroundColor(.primary)
                     
                     Text(description)
-                        .font(.custom("SF Pro AR Display Regular", size: 16))
+                        .font(.regular(size: 16))
                         .lineSpacing(4)
                         .foregroundColor(.primary)
                 }
@@ -215,12 +214,12 @@ struct ArticleDetail: View {
             
             if let content = article.content, !content.isEmpty {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(NSLocalizedString("content", comment: "Content"))
-                        .font(.custom("SF Pro AR Display Semibold", size: 18))
+                    Text(Localized.content)
+                        .font(.semibold(size: 18))
                         .foregroundColor(.primary)
                     
                     Text(content)
-                        .font(.custom("SF Pro AR Display Regular", size: 16))
+                        .font(.regular(size: 16))
                         .lineSpacing(6)
                         .foregroundColor(.primary)
                 }
@@ -235,15 +234,15 @@ struct ArticleDetail: View {
                 Link(destination: url) {
                     HStack {
                         Image(systemName: "safari.fill")
-                            .font(.system(size: 16, weight: .semibold))
+                            .font(.semibold(size: 16))
                         
-                        Text(NSLocalizedString("read_full_article", comment: "Read full article"))
-                            .font(.custom("SF Pro AR Display Semibold", size: 16))
+                        Text(Localized.readFullArticle)
+                            .font(.semibold(size: 16))
                         
                         Spacer()
                         
                         Image(systemName: "arrow.up.right")
-                            .font(.system(size: 14, weight: .medium))
+                            .font(.semibold(size: 14))
                     }
                     .foregroundColor(.white)
                     .padding(.horizontal, 24)
@@ -269,9 +268,9 @@ struct ArticleDetail: View {
                 Button(action: {}) {
                     HStack {
                         Image(systemName: "bookmark")
-                            .font(.system(size: 14, weight: .medium))
-                        Text(NSLocalizedString("save_button", comment: "Share"))
-                            .font(.custom("SF Pro AR Display Semibold", size: 14))
+                            .font(.semibold(size: 14))
+                        Text(Localized.saveButton)
+                            .font(.semibold(size: 14))
                     }
                     .foregroundColor(.primary)
                     .padding(.horizontal, 20)
@@ -288,9 +287,9 @@ struct ArticleDetail: View {
                 Button(action: shareArticle) {
                     HStack {
                         Image(systemName: "square.and.arrow.up")
-                            .font(.system(size: 14, weight: .medium))
-                        Text(NSLocalizedString("share_button", comment: "Share"))
-                            .font(.custom("SF Pro AR Display Semibold", size: 14))
+                            .font(.semibold(size: 14))
+                        Text(Localized.shareButton)
+                            .font(.semibold(size: 14))
                     }
                     .foregroundColor(.primary)
                     .padding(.horizontal, 20)
@@ -311,7 +310,7 @@ struct ArticleDetail: View {
                 .frame(width: 36, height: 36)
                 .overlay(
                     Image(systemName: "square.and.arrow.up")
-                        .font(.system(size: 16, weight: .semibold))
+                        .font(.semibold(size: 16))
                         .foregroundColor(.primary)
                 )
                 .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)

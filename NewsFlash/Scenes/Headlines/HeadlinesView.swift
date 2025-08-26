@@ -21,8 +21,8 @@ struct HeadlinesView: View {
                 // Content
                 contentView
             }
-            .navigationTitle(NSLocalizedString("news_flash", comment: "News Flash"))
-            .font(.custom("SF Pro AR Display Regular", size: 24)) // <-- Apply the custom font here
+            .navigationTitle(Localized.newsFlash)
+            .font(.regular(size: 24))
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: refreshAction) {
@@ -53,17 +53,17 @@ struct HeadlinesView: View {
             HStack {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(.secondary)
-                    .font(.custom("SF Pro AR Display Semibold", size: 16))
+                    .font(.semibold(size: 16))
                 
-                TextField(NSLocalizedString("search_placeholder", comment: "Search news..."), text: $viewModel.query)
+                TextField(Localized.searchPlaceholder, text: $viewModel.query)
                     .textFieldStyle(.plain)
-                    .font(.custom("SF Pro AR Display Regular", size: 16))
+                    .font(.regular(size: 16))
                 
                 if !viewModel.query.isEmpty {
                     Button(action: { viewModel.query = "" }) {
                         Image(systemName: "xmark.circle.fill")
                             .foregroundColor(.secondary)
-                            .font(.custom("SF Pro AR Display Regular", size: 14))
+                            .font(.regular(size: 14))
                     }
                 }
             }
@@ -79,8 +79,8 @@ struct HeadlinesView: View {
     private var suggestedTopicsSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                Text(NSLocalizedString("trending_topics", comment: "Trending Topics"))
-                    .font(.custom("SF Pro AR Display Semibold", size: 16))
+                Text(Localized.trendingTopics)
+                    .font(.semibold(size: 16))
                     .foregroundColor(.secondary)
                 
                 Spacer()
@@ -115,12 +115,12 @@ struct HeadlinesView: View {
     private var contentView: some View {
         switch viewModel.state {
         case .idle:
-            ProgressView("Loading…")
+            ProgressView(Localized.loading)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             
         case .loading:
             if viewModel.articles.isEmpty {
-                ProgressView("Loading…")
+                ProgressView(Localized.loading)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 articlesList
@@ -154,9 +154,9 @@ struct HeadlinesView: View {
     
     private var emptyStateView: some View {
         ContentUnavailableView(
-            NSLocalizedString("no_articles", comment: "No Articles"),
+            Localized.noArticles,
             systemImage: "newspaper",
-            description: Text(NSLocalizedString(viewModel.query.isEmpty ? "no_articles_available" : "no_articles_found", comment: "Empty state message"))
+            description: Text(viewModel.query.isEmpty ? Localized.noArticlesAvailable : Localized.noArticlesFound)
         )
     }
     
@@ -164,13 +164,13 @@ struct HeadlinesView: View {
         ScrollView {
             VStack(spacing: 20) {
                 ContentUnavailableView(
-                    NSLocalizedString("unable_to_load", comment: "Unable to Load News"),
+                    Localized.unableToLoad,
                     systemImage: "exclamationmark.triangle",
                     description: Text(NSLocalizedString(message, comment: "Error message"))
                 )
                 
                 Button(action: refreshAction) {
-                    Label(NSLocalizedString("retry", comment: "Try Again"), systemImage: "arrow.clockwise")
+                    Label(Localized.retry, systemImage: "arrow.clockwise")
                 }
                 .buttonStyle(.borderedProminent)
                 .disabled(viewModel.state == .loading)
@@ -185,9 +185,9 @@ struct HeadlinesView: View {
             ArticleDetail(article: selectedArticle)
         } else {
             ContentUnavailableView(
-                NSLocalizedString("select_article", comment: "Select an Article"),
+                Localized.selectArticle,
                 systemImage: "newspaper",
-                description: Text(NSLocalizedString("choose_headline", comment: "Choose a headline from the list to read the full story."))
+                description: Text(Localized.chooseHeadline)
             )
         }
     }
@@ -211,7 +211,7 @@ struct TopicChip: View {
     var body: some View {
         Button(action: action) {
             Text(topic)
-                .font(.custom("SF Pro AR Display Semibold", size: 13))
+                .font(.semibold(size: 13))
                 .foregroundColor(isSelected ? .white : .primary)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 6)

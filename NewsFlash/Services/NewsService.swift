@@ -30,7 +30,13 @@ protocol NewsServiceProtocol {
 }
 
 enum GNewsAPI {
-    static let base = URL(string: "https://gnews.io/api/v4")!
+    static var base: URL {
+        guard let urlString = Bundle.main.object(forInfoDictionaryKey: "BASE_URL") as? String,
+              let url = URL(string: "https://\(urlString)") else {
+            fatalError("Base URL not found in Info.plist or xcconfig")
+        }
+        return url
+    }
 }
 
 // MARK: - Routing
