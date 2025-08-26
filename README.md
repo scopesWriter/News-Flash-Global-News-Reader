@@ -3,7 +3,8 @@
 Your minimalist, fast, and localized SwiftUI news reader. Browse top headlines, read full articles, and switch languages seamlessly. Built with clean MVVM architecture, fully test-covered core logic, and zero external runtime dependencies.
 
 ## Attachments
-![Icon Description](/Users/bishoybadie/Desktop/Simulator Screenshot - iPhone 16 Pro Max - 2025-08-26 at 18.11.54.png)
+
+![Icon Description](/Users/bishoybadie/Desktop/screenshot1.png)
 ![Icon Description](/Users/bishoybadie/Desktop/Simulator Screenshot - iPhone 16 Pro Max - 2025-08-26 at 18.20.24.png)
 ![Icon Description](/Users/bishoybadie/Desktop/Simulator Screenshot - iPhone 16 Pro Max - 2025-08-26 at 18.11.12.png)
 ![Icon Description](/Users/bishoybadie/Desktop/Simulator Screenshot - iPhone 16 Pro Max - 2025-08-26 at 18.20.18.png)
@@ -210,5 +211,3 @@ Specify your license here (e.g., MIT). If using bundled fonts/assets, confirm re
 ### Contact
 
 Questions or feedback? Open an issue or reach out via your preferred contact channel.
-
-
