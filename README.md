@@ -3,13 +3,12 @@
 Your minimalist, fast, and localized SwiftUI news reader. Browse top headlines, read full articles, and switch languages seamlessly. Built with clean MVVM architecture, fully test-covered core logic, and zero external runtime dependencies.
 
 ## Attachments
+<img width="1320" height="2868" alt="Simulator Screenshot - iPhone 16 Pro Max - 2025-08-26 at 18 11 26" src="https://github.com/user-attachments/assets/4bf5d76d-33a3-4d2b-9f05-65ada1d0bd2f" />
+<img width="1320" height="2868" alt="Simulator Screenshot - iPhone 16 Pro Max - 2025-08-26 at 18 11 54" src="https://github.com/user-attachments/assets/37ce75bb-b783-4d48-abe5-044a1148d20b" />
+<img width="1320" height="2868" alt="Simulator Screenshot - iPhone 16 Pro Max - 2025-08-26 at 18 20 24" src="https://github.com/user-attachments/assets/04e932c5-e14b-4158-9c14-e62a07e9f08c" />
+<img width="1320" height="2868" alt="Simulator Screenshot - iPhone 16 Pro Max - 2025-08-26 at 18 20 18" src="https://github.com/user-attachments/assets/37619354-053e-490e-86db-cb682189358b" />
 
-![Icon Description](./Resources/Simulator Screenshot - iPhone 16 Pro Max - 2025-08-26 at 18.11.54.jpeg)
-![Icon Description](./Resources/Simulator Screenshot - iPhone 16 Pro Max - 2025-08-26 at 18.20.02.jpeg)
-![Icon Description](./Resources/Simulator Screenshot - iPhone 16 Pro Max - 2025-08-26 at 18.20.18.jpeg)
-![Icon Description](./Resources/Simulator Screenshot - iPhone 16 Pro Max - 2025-08-26 at 18.20.24.jpeg)
-![Icon Description](./Resources/screenshot1.jpeg)
-![Icon Description](./Resources/screenshot2.jpeg)
+
 
 ---
 
