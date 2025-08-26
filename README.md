@@ -1,10 +1,10 @@
-## NewsFlash
+## 📸 NewsFlash 
 
 Your minimalist, fast, and localized SwiftUI news reader. Browse top headlines, read full articles, and switch languages seamlessly. Built with clean MVVM architecture, fully test-covered core logic, and zero external runtime dependencies.
 
 ---
 
-### Highlights
+### 💡 Highlights
 
 - **SwiftUI-first UI**: Modern, reactive, and smooth.
 - **MVVM architecture**: Clear separation of concerns with `View` ↔ `ViewModel` ↔ `Service`.
@@ -15,7 +15,7 @@ Your minimalist, fast, and localized SwiftUI news reader. Browse top headlines, 
 
 ---
 
-### Screenshots
+### ✨ Screenshots
 
 Add your screenshots here (place them in `Resources/Assets.xcassets` or embed links):
 
@@ -39,7 +39,7 @@ Add your screenshots here (place them in `Resources/Assets.xcassets` or embed li
 
 ---
 
-### Project Structure
+### 👨🏻‍💻 Project Structure
 
 ```text
 NewsFlash/
@@ -75,7 +75,7 @@ NewsFlash/
 
 ---
 
-### Architecture
+### 🏢 Architecture
 
 - **Models**: Data structures like `Article`.
 - **Views (SwiftUI)**: `HeadlinesView`, `ArticleRow`, `ArticleDetail`.
@@ -94,7 +94,7 @@ Data flow: View triggers intent → ViewModel requests data from Service → Ser
 
 ---
 
-### Getting Started
+### 🚀 Getting Started
 
 1) Clone the repo
 
@@ -129,7 +129,7 @@ Never commit secrets. Use user-specific xcconfig files or CI secrets.
 
 ---
 
-### Testing
+### 🧪 Testing
 
 Run all tests from Xcode: Product → Test (⌘U) on the `NewsFlash` scheme.
 
@@ -152,7 +152,7 @@ What’s covered:
 
 ---
 
-### Localization
+### 🏴󠁧󠁢󠁥󠁮󠁧󠁿🇸🇦 Localization
 
 - Strings live in `Resources/en.lproj/Localizable.strings` and `Resources/ar.lproj/Localizable.strings`.
 - Arabic (RTL) is supported. Verify layout in Simulator by changing the system language or using Xcode’s Preview locale.
@@ -164,7 +164,7 @@ Tips:
 
 ---
 
-### Fonts
+### ✏️ Fonts
 
 Custom fonts are bundled in `Resources/Fonts/`:
 
@@ -175,7 +175,7 @@ Ensure they are referenced in `Info.plist` under `UIAppFonts` and used via Swift
 
 ---
 
-### Development Notes
+### 📝 Development Notes
 
 - Prefer value types for models; keep them `Codable`.
 - Keep networking isolated in `NewsService` with clear APIs.
@@ -184,7 +184,7 @@ Ensure they are referenced in `Info.plist` under `UIAppFonts` and used via Swift
 
 ---
 
-### Roadmap
+### 🗺️ Roadmap
 
 - Search and category filters
 - Offline caching and refresh controls
@@ -194,7 +194,7 @@ Ensure they are referenced in `Info.plist` under `UIAppFonts` and used via Swift
 
 ---
 
-### Contributing
+### 👷‍♂️ Contributing
 
 1. Create a feature branch: `git checkout -b feat/<name>`
 2. Make your changes with tests.
@@ -203,7 +203,7 @@ Ensure they are referenced in `Info.plist` under `UIAppFonts` and used via Swift
 
 ---
 
-### License
+### 🪪 License
 
 Specify your license here (e.g., MIT). If using bundled fonts/assets, confirm redistribution rights.
 
