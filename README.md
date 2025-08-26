@@ -2,14 +2,6 @@
 
 Your minimalist, fast, and localized SwiftUI news reader. Browse top headlines, read full articles, and switch languages seamlessly. Built with clean MVVM architecture, fully test-covered core logic, and zero external runtime dependencies.
 
-## Attachments
-<img width="1320" height="2868" alt="Simulator Screenshot - iPhone 16 Pro Max - 2025-08-26 at 18 11 26" src="https://github.com/user-attachments/assets/4bf5d76d-33a3-4d2b-9f05-65ada1d0bd2f" />
-<img width="1320" height="2868" alt="Simulator Screenshot - iPhone 16 Pro Max - 2025-08-26 at 18 11 54" src="https://github.com/user-attachments/assets/37ce75bb-b783-4d48-abe5-044a1148d20b" />
-<img width="1320" height="2868" alt="Simulator Screenshot - iPhone 16 Pro Max - 2025-08-26 at 18 20 24" src="https://github.com/user-attachments/assets/04e932c5-e14b-4158-9c14-e62a07e9f08c" />
-<img width="1320" height="2868" alt="Simulator Screenshot - iPhone 16 Pro Max - 2025-08-26 at 18 20 18" src="https://github.com/user-attachments/assets/37619354-053e-490e-86db-cb682189358b" />
-
-
-
 ---
 
 ### Highlights
@@ -27,8 +19,23 @@ Your minimalist, fast, and localized SwiftUI news reader. Browse top headlines, 
 
 Add your screenshots here (place them in `Resources/Assets.xcassets` or embed links):
 
-- Headlines list view
-- Article details view (LTR and RTL)
+- **Headlines list view**
+<table>
+  <tr>
+    <td><img width="1320" height="2868" alt="Simulator Screenshot - iPhone 16 Pro Max - 2025-08-26 at 18 20 24" src="https://github.com/user-attachments/assets/2bf171f1-e736-4df8-8d66-2379b09a1099" /></td>
+    <td><img width="1320" height="2868" alt="Simulator Screenshot - iPhone 16 Pro Max - 2025-08-26 at 18 20 18" src="https://github.com/user-attachments/assets/84a14f37-601c-44c8-ba6c-224a19c303aa" /></td>
+    <td><img width="1320" height="2868" alt="simulator_screenshot_5481BB9F-644E-448A-871F-CB60B75779E9" src="https://github.com/user-attachments/assets/c3320d8a-4249-4c5c-b406-b8bd73b8b285" /></td>
+  </tr>
+</table>
+
+- **Article details view (LTR and RTL)**
+<table>
+  <tr>
+    <td><img width="1320" height="2868" alt="Simulator Screenshot - iPhone 16 Pro Max - 2025-08-26 at 18 11 54" src="https://github.com/user-attachments/assets/308460d2-872e-4ca1-9e95-c2a34d89e6e6" /></td>
+    <td><img width="1320" height="2868" alt="Simulator Screenshot - iPhone 16 Pro Max - 2025-08-26 at 18 11 12" src="https://github.com/user-attachments/assets/b6362231-bc8e-4755-975e-a228eb0f1ad3" /></td>
+    <td><img width="1320" height="2868" alt="simulator_screenshot_008EAB2C-7051-4F32-8781-B498EE9479F2" src="https://github.com/user-attachments/assets/05a66c32-0849-4416-8367-70d120e78da3" /></td>
+  </tr>
+</table>
 
 ---
 
