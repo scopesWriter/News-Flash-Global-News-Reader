@@ -3,87 +3,6 @@
 //  NewsFlash
 //
 
-//import SwiftUI
-//
-//struct HeadlinesView: View {
-//    @StateObject private var viewModel = HeadlinesViewModel()
-//    @State private var selectedArticle: Article?
-//
-//    var body: some View {
-//        NavigationSplitView {
-//            Group {
-//                switch viewModel.state {
-//                case .idle, .loading, .loaded:
-//                    List(viewModel.articles, id: \._idForList) { article in
-//                        NavigationLink(value: article) {
-//                            ArticleRow(article: article)
-//                        }
-//                    }
-//                    .overlay(alignment: .center) {
-//                        if case .loading = viewModel.state { ProgressView("Loading…") }
-//                        else if viewModel.articles.isEmpty { ContentUnavailableView("No Articles", systemImage: "newspaper", description: Text("Try searching for something else.")) }
-//                    }
-//                    .listStyle(.insetGrouped)
-//                    .scrollIndicators(.hidden)
-//                    .redacted(reason: (viewModel.state == .loading) ? .placeholder : [])
-//                    .animation(.easeInOut(duration: 0.2), value: viewModel.state)
-//                case let .error(message):
-//                    ScrollView {
-//                        VStack(spacing: 16) {
-//                            ContentUnavailableView("Error", systemImage: "exclamationmark.triangle", description: Text(message))
-//                            Button {
-//                                Task { await viewModel.refresh() }
-//                            } label: {
-//                                Label("Retry", systemImage: "arrow.clockwise")
-//                            }
-//                            .buttonStyle(.borderedProminent)
-//                        }
-//                        .padding()
-//                    }
-//                }
-//            }
-//            .searchable(text: $viewModel.query, placement: .navigationBarDrawer(displayMode: .always))
-//            .searchSuggestions {
-//                ForEach($viewModel.quickTopics, id: \.self) { topic in
-//                    Text(topic).searchCompletion(topic)
-//                }
-//            }
-//            .navigationTitle("NewsFlash")
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    Button { Task { await viewModel.refresh() } } label: { Image(systemName: "arrow.clockwise") }
-//                }
-//            }
-//            .refreshable { await viewModel.refresh() }
-//            .task { await viewModel.refresh() }
-//            .animation(.easeInOut(duration: 0.2), value: viewModel.state)
-//            .navigationDestination(for: Article.self) { article in
-//                ArticleDetail(article: article)
-//            }
-//        } detail: {
-//            if let selectedArticle {
-//                ArticleDetail(article: selectedArticle)
-//            } else {
-//                ContentUnavailableView(
-//                    "Select an article",
-//                    systemImage: "newspaper",
-//                    description: Text("Choose a headline to read details.")
-//                )
-//            }
-//        }
-//        .navigationSplitViewStyle(.balanced)
-//    }
-//}
-//
-//#Preview {
-//    HeadlinesView()
-//}
-
-//
-//  HeadlinesView.swift
-//  NewsFlash
-//
-
 import SwiftUI
 
 struct HeadlinesView: View {
@@ -153,10 +72,8 @@ struct HeadlinesView: View {
             .background(Color(.systemGray6))
             .cornerRadius(10)
             .padding(.horizontal, 16)
-            
-            Divider()
         }
-        .padding(.top, 8)
+        .padding([.top, .bottom], 8)
     }
     
     private var suggestedTopicsSection: some View {
