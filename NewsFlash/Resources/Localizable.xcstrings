@@ -36,7 +36,14 @@
       }
     },
     "back" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "عودة"
+          }
+        }
+      }
     },
     "business" : {
       "extractionState" : "manual",
@@ -73,7 +80,14 @@
       }
     },
     "clear_search" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مسح"
+          }
+        }
+      }
     },
     "climate" : {
       "extractionState" : "manual",
@@ -296,25 +310,21 @@
         }
       }
     },
-    "no_articles_found" : {
-      "extractionState" : "manual",
+    "no_articles_found_with_topic %@" : {
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "لم يتم العثور على مقالات لـ '%@'."
+            "value" : "لم يتم العثور على مقالات"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No articles found for '%@'."
+            "value" : "No articles found for ‘%@’"
           }
         }
       }
-    },
-    "no_articles_found %@" : {
-
     },
     "politics" : {
       "extractionState" : "manual",
@@ -553,9 +563,6 @@
           }
         }
       }
-    },
-    "topic_%@" : {
-
     },
     "trending_topics" : {
       "extractionState" : "manual",

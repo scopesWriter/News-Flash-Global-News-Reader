@@ -13,7 +13,7 @@ struct ArticleRow: View {
 
     // MARK: - Body
     var body: some View {
-        HStack(alignment: .top, spacing: 12) {
+        HStack(alignment: .center, spacing: 12) {
             AsyncImage(url: item.imageURL) { phase in
                 switch phase {
                 case .empty, .failure:
@@ -33,16 +33,16 @@ struct ArticleRow: View {
 
             VStack(alignment: .leading, spacing: 6) {
                 Text(item.title)
-                    .font(.headline)
+                    .font(.semibold(size: 16))
                     .lineLimit(2)
                     .minimumScaleFactor(0.9)
                 HStack(spacing: 8) {
                     Text(item.source)
-                        .font(.subheadline)
+                        .font(.regular(size: 14))
                         .foregroundStyle(.secondary)
                         .lineLimit(1)
                     Text(item.publishedRelative ?? "")
-                        .font(.caption2)
+                        .font(.regular(size: 8))
                         .foregroundStyle(.secondary)
                         .lineLimit(1)
                 }

@@ -16,7 +16,7 @@ enum PresentationError: Equatable {
 }
 
 extension PresentationError {
-    var title: String {
+    var message: String {
         switch self {
         case .networkUnavailable: return String(localized: "network_unavailable")
         case .missingAuth: return String(localized: "missing_api_key")

@@ -11,7 +11,7 @@ import Foundation
 final class ArticleDetailsViewModel: ObservableObject {
     private let item: HeadlineItemViewData
 
-    // Optional analytics/use-case dependency can be injected later.
+    // TODO: Optional analytics/use-case dependency can be injected later.
 
     init(item: HeadlineItemViewData) {
         self.item = item
@@ -26,9 +26,10 @@ final class ArticleDetailsViewModel: ObservableObject {
     var content: String? { item.content }
     var articleURL: URL? { item.articleURL }
 
-    // Called when the user taps Share (for analytics/side-effects).
+    // MARK: - Actions
+    
     // the actual share UI declarative in the View via `ShareLink`.
     func shareTapped() {
-        // TODO: Inject and call a use-case here, e.g.:
+        // TODO: Inject and call a use-case here, e.g.: ShareUseCase
     }
 }

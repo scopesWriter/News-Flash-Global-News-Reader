@@ -36,20 +36,17 @@ struct HeadlinesView: View {
                     Button(action: refreshAction) {
                         Image(systemName: "arrow.clockwise")
                     }
-                    .disabled(isLoading)
+                    .disabled(viewModel.state.isLoading)
                 }
-            }
-            .refreshable {
-                await viewModel.refresh()
             }
             .task {
                 await viewModel.loadInitialData()
             }
-            .onChange(of: viewModel.query) {
-                viewModel.queryChanged(viewModel.query)
+            .onChange(of: viewModel.query) { _, newValue in
+                viewModel.queryChanged(newValue)
             }
             .navigationDestination(for: HeadlineItemViewData.self) { item in
-                ArticleDetailsView(item: item) // uses convenience init to resolve DI
+                ArticleDetailsView(item: item) // uses convenience init to resolve DI (No Dependency Container should be called here)
             }
         } detail: {
             detailView
@@ -102,17 +99,10 @@ struct HeadlinesView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 8) {
                     ForEach(viewModel.topics, id: \.self) { topic in
-                        let id = topic.rawValue
                         TopicChip(
-                            topic: String(localized: "topic_\(id)"),
-                            isSelected: viewModel.query.caseInsensitiveCompare(id) == .orderedSame,
-                            action: {
-                                if viewModel.query.caseInsensitiveCompare(id) == .orderedSame {
-                                    viewModel.query = ""
-                                } else {
-                                    viewModel.query = id
-                                }
-                            }
+                            topic: String(localized: topic.localizedName),
+                            isSelected: viewModel.isTopicSelected(topic),
+                            action: { viewModel.toggleTopic(topic) }
                         )
                     }
                 }
@@ -124,73 +114,77 @@ struct HeadlinesView: View {
         .padding(.bottom, 4)
     }
     
-    @ViewBuilder
     private var contentView: some View {
-        switch viewModel.state {
-        case .idle:
-            ProgressView(String(localized: "loading"))
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-            
-        case .loading(let kind):
-            // Show full-screen spinner for initial load; skeleton for others
-            if case .initial = kind {
-                ProgressView(String(localized: "loading"))
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else {
-                // We don't have items here, so show a lightweight placeholder
-                articlesList([])
-                    .redacted(reason: .placeholder)
-                    .animation(.easeInOut(duration: 0.2), value: viewModel.state)
-            }
-            
-        case .loaded(let items):
-            if items.isEmpty {
-                emptyStateView
-            } else {
-                articlesList(items)
-                    .animation(.easeInOut(duration: 0.2), value: items)
-            }
-            
-        case .error(let err):
-            errorView(error: err)
-        }
-    }
-    
-    private func articlesList(_ items: [HeadlineItemViewData]) -> some View {
-        List(items, selection: $selection) { item in
-            NavigationLink(value: item) {
-                ArticleRow(item: item)
+        List(selection: $selection) {
+            switch viewModel.state {
+            case .idle, .loading:
+                redactedView()
+            case .loaded(let items):
+                loadedView(items: items)
+            case .error(let err):
+                errorView(error: err)
             }
         }
+        .refreshable { await viewModel.refresh() }
         .listStyle(.insetGrouped)
         .scrollIndicators(.hidden)
         .listRowSpacing(8)
+        .environment(\.defaultMinListRowHeight, 44)
+    }
+    
+    private func redactedView() -> some View {
+        Section {
+            ForEach(0..<6, id: \.self) { _ in
+                ArticleRowRedactedView()
+            }
+        }
+        .listRowSeparator(.hidden)
     }
     
     private var emptyStateView: some View {
         ContentUnavailableView(
             String(localized: "no_articles"),
             systemImage: "newspaper",
-            description: Text(emptyDescriptionMessage)
+            description: Text(viewModel.emptyDescriptionMessage)
         )
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 24)
     }
-
     
     private func errorView(error: PresentationError) -> some View {
-        return ScrollView {
+        Section {
             VStack(spacing: 20) {
                 ContentUnavailableView(
                     String(localized: "unable_to_load"),
                     systemImage: "exclamationmark.triangle",
-                    description: Text(error.title)
+                    description: Text(error.message)
                 )
                 Button(action: refreshAction) {
                     Label(String(localized: "retry"), systemImage: "arrow.clockwise")
                 }
                 .buttonStyle(.borderedProminent)
-                .disabled(isLoading)
+                .disabled(viewModel.state.isLoading)
             }
+            .frame(maxWidth: .infinity)
             .padding()
+        }
+        .listRowSeparator(.hidden)
+    }
+    
+    @ViewBuilder
+    private func loadedView(items: [HeadlineItemViewData]) -> some View {
+        if items.isEmpty {
+            Section {
+                emptyStateView
+                    .listRowSeparator(.hidden)
+            }
+            .listRowSeparator(.hidden)
+        } else {
+            ForEach(items) { item in
+                NavigationLink(value: item) {
+                    ArticleRow(item: item)
+                }
+            }
         }
     }
     
@@ -207,18 +201,6 @@ struct HeadlinesView: View {
         }
     }
     
-    // MARK: - Derived State
-    private var isLoading: Bool {
-        if case .loading = viewModel.state { return true }
-        return false
-    }
-    
-    private var emptyDescriptionMessage: String {
-        viewModel.query.isEmpty
-                          ? String(localized: "no_articles_available")
-                          : String(localized: "no_articles_found \(viewModel.query)")
-    }
-    
     // MARK: - Actions
     
     private func refreshAction() {
@@ -226,18 +208,6 @@ struct HeadlinesView: View {
             await viewModel.refresh()
         }
     }
-}
-
-// MARK: - Preview
-
-#Preview {
-    HeadlinesView()
-        .preferredColorScheme(.light)
-}
-
-#Preview("Dark Mode") {
-    HeadlinesView()
-        .preferredColorScheme(.dark)
 }
 
 // MARK: - Refactor Note:
@@ -253,4 +223,16 @@ extension HeadlinesView {
     init(container: DependencyContainer = .shared) {
         self.init(viewModel: container.makeHeadlinesViewModel())
     }
+}
+
+// MARK: - Preview
+
+#Preview {
+    HeadlinesView()
+        .preferredColorScheme(.light)
+}
+
+#Preview("Dark Mode") {
+    HeadlinesView()
+        .preferredColorScheme(.dark)
 }

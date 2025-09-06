@@ -9,22 +9,22 @@ import SwiftUI
 
 struct ArticleDetailsView: View {
     // MARK: - ViewModel
-
+    
     @StateObject private var viewModel: ArticleDetailsViewModel
-
+    
     // MARK: - System Private Variables
-
+    
     @Environment(\.dismiss) private var dismiss
     @Environment(\.layoutDirection) private var layoutDirection
     private var imageHeight: CGFloat = 300
     @State private var isContentVisible = false
-
+    
     // MARK: - Initializer
-
+    
     init(viewModel: ArticleDetailsViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
-
+    
     // MARK: - Body
     var body: some View {
         GeometryReader { geometry in
@@ -32,7 +32,7 @@ struct ArticleDetailsView: View {
                 LazyVStack(alignment: .leading, spacing: 0) {
                     // Hero Image Section
                     heroImageSection(geometry: geometry)
-
+                    
                     // Content Section
                     contentSection
                         .opacity(isContentVisible ? 1 : 0)
@@ -62,7 +62,7 @@ struct ArticleDetailsView: View {
                         .accessibilityLabel(String(localized: "back"))
                 }
             }
-
+            
             ToolbarItem(placement: .navigationBarTrailing) {
                 shareButton
             }
@@ -74,16 +74,16 @@ struct ArticleDetailsView: View {
             }
         }
     }
-
+    
     // MARK: - View Components
-
+    
     private func heroImageSection(geometry: GeometryProxy) -> some View {
         Group {
             if let url = viewModel.imageURL {
                 GeometryReader { proxy in
                     let offset = proxy.frame(in: .named("scroll")).minY
                     let height = max(imageHeight, imageHeight + offset)
-
+                    
                     WebImage(url: url)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
@@ -105,7 +105,7 @@ struct ArticleDetailsView: View {
             }
         }
     }
-
+    
     private func placeholderImage(height: CGFloat) -> some View {
         Rectangle()
             .fill(
@@ -122,18 +122,18 @@ struct ArticleDetailsView: View {
                     .foregroundColor(.secondary)
             )
     }
-
+    
     private var contentSection: some View {
         VStack(alignment: .leading, spacing: 24) {
             // Title and Metadata
             titleAndMetadataSection
-
+            
             // Article Content
             articleContentSection
-
+            
             // Action Buttons
             actionButtonsSection
-
+            
             // Bottom Spacer
             Color.clear.frame(height: 40)
         }
@@ -146,7 +146,7 @@ struct ArticleDetailsView: View {
         )
         .offset(y: -20)
     }
-
+    
     private var titleAndMetadataSection: some View {
         VStack(alignment: .leading, spacing: 16) {
             // Article Title
@@ -154,7 +154,7 @@ struct ArticleDetailsView: View {
                 .font(.semibold(size: 24))
                 .lineLimit(nil)
                 .multilineTextAlignment(.leading)
-
+            
             // Source and Date
             HStack(spacing: 16) {
                 // Source
@@ -167,21 +167,21 @@ struct ArticleDetailsView: View {
                                 .font(.semibold(size: 12))
                                 .foregroundColor(.accentColor)
                         )
-
+                    
                     Text(viewModel.source.isEmpty ? String(localized: "unknown_source") : viewModel.source)
                         .font(.semibold(size: 15))
                         .foregroundColor(.primary)
                 }
-
+                
                 Spacer()
-
+                
                 // Published Date
                 if let rel = viewModel.publishedRelative, !rel.isEmpty {
                     HStack(spacing: 6) {
                         Image(systemName: "clock")
                             .font(.regular(size: 12))
                             .foregroundColor(.secondary)
-
+                        
                         Text(rel)
                             .font(.regular(size: 14))
                             .foregroundColor(.secondary)
@@ -196,7 +196,7 @@ struct ArticleDetailsView: View {
             )
         }
     }
-
+    
     private var articleContentSection: some View {
         VStack(alignment: .leading, spacing: 20) {
             if let description = viewModel.summary, !description.isEmpty {
@@ -204,7 +204,7 @@ struct ArticleDetailsView: View {
                     Text(String(localized: "summary"))
                         .font(.semibold(size: 18))
                         .foregroundColor(.primary)
-
+                    
                     Text(description)
                         .font(.regular(size: 16))
                         .lineSpacing(4)
@@ -221,13 +221,13 @@ struct ArticleDetailsView: View {
                         )
                 )
             }
-
+            
             if let content = viewModel.content, !content.isEmpty {
                 VStack(alignment: .leading, spacing: 8) {
                     Text(String(localized: "content"))
                         .font(.semibold(size: 18))
                         .foregroundColor(.primary)
-
+                    
                     Text(content)
                         .font(.regular(size: 16))
                         .lineSpacing(6)
@@ -236,7 +236,7 @@ struct ArticleDetailsView: View {
             }
         }
     }
-
+    
     private var actionButtonsSection: some View {
         VStack(spacing: 16) {
             // Read Full Article Button
@@ -245,12 +245,12 @@ struct ArticleDetailsView: View {
                     HStack {
                         Image(systemName: "safari.fill")
                             .font(.semibold(size: 16))
-
+                        
                         Text(String(localized: "read_full_article"))
                             .font(.semibold(size: 16))
-
+                        
                         Spacer()
-
+                        
                         Image(systemName: "arrow.up.right")
                             .font(.semibold(size: 14))
                     }
@@ -271,7 +271,7 @@ struct ArticleDetailsView: View {
                 }
                 .buttonStyle(.plain)
             }
-
+            
             // Secondary Actions
             HStack(spacing: 12) {
                 // Save Button
@@ -293,9 +293,9 @@ struct ArticleDetailsView: View {
                     )
                 }
                 .accessibilityLabel(String(localized: "save_button"))
-
+                
                 Spacer()
-
+                
                 // Share Button (Alternative)
                 if let url = viewModel.articleURL {
                     ShareLink(item: url) {
@@ -313,12 +313,16 @@ struct ArticleDetailsView: View {
                                 .fill(.thinMaterial)
                         )
                     }
-                    .simultaneousGesture(TapGesture().onEnded { viewModel.shareTapped() })
+                    .simultaneousGesture(TapGesture()
+                        .onEnded {
+                            viewModel.shareTapped()
+                        }
+                    )
                 }
             }
         }
     }
-
+    
     @ViewBuilder
     private var shareButton: some View {
         if let url = viewModel.articleURL {
@@ -328,8 +332,10 @@ struct ArticleDetailsView: View {
                     .frame(width: 36, height: 36)
                     .overlay(
                         Image(systemName: "square.and.arrow.up")
+                            .resizable()
                             .font(.semibold(size: 16))
                             .foregroundColor(.primary)
+                            .frame(width: 20, height: 26)
                     )
                     .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
             }
@@ -357,16 +363,16 @@ extension ArticleDetailsView {
 #Preview("ArticleDetails", traits: .portrait) {
     NavigationStack {
         ArticleDetailsView(
-                item: HeadlineItemViewData(
-                    id: "1",
-                    title: "Apple Unveils Revolutionary New Technology",
-                    source: "Apple Newsroom",
-                    imageURL: URL(string: "https://via.placeholder.com/600x400"),
-                    publishedRelative: "2h",
-                    articleURL: URL(string: "https://example.com"),
-                    summary: "In a groundbreaking announcement...",
-                    content: "This is the detailed content..."
-                )
+            item: HeadlineItemViewData(
+                id: "1",
+                title: "Apple Unveils Revolutionary New Technology",
+                source: "Apple Newsroom",
+                imageURL: URL(string: "https://via.placeholder.com/600x400"),
+                publishedRelative: "2h",
+                articleURL: URL(string: "https://example.com"),
+                summary: "In a groundbreaking announcement...",
+                content: "This is the detailed content..."
+            )
         )
     }
 }
