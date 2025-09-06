@@ -10,15 +10,17 @@ import SwiftUI
 
 @main
 struct NewsFlashApp: App {
+    let container: DependencyContainer = .shared
+    
     var body: some Scene {
         WindowGroup {
-            HeadlinesView()
+            HeadlinesView(viewModel: container.makeHeadlinesViewModel())
         }
     }
-
+    
     init() {
-        #if DEBUG
-            NFX.sharedInstance().start()
-        #endif
+#if DEBUG
+        NFX.sharedInstance().start()
+#endif
     }
 }
