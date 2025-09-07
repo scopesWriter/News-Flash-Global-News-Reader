@@ -120,23 +120,23 @@ NewsFlash/
 <img width="808" height="394" alt="Screenshot 2025-09-06 at 7 35 13 PM" src="https://github.com/user-attachments/assets/252c2ab9-1f60-4ca9-b4fc-7132ef30ea1a" />
 
 The project follows Clean Architecture with MVVM at the presentation layer:
-	•	Data Layer
-	•	RemoteDataSources: Handles networking via URLSessionAPIClient, API config, endpoints, token management, and DTOs (ArticleResponseDTO).
-	•	Repositories: Implement repository protocols to mediate between Data and Domain.
-	•	Errors: Define network/service-level errors (NewsServiceError).
-	•	Domain Layer
-	•	Entities: Core business models like Article.
-	•	Errors: Domain-specific errors (DomainError).
-	•	Protocols: Abstractions for data sources, repositories, and use cases.
-	•	UseCases: Application-specific business rules (TopHeadlinesUseCase, SearchArticlesUseCase).
-	•	Presentation Layer (MVVM + SwiftUI)
-	•	Scenes: Grouped by feature.
-	•	Headlines: Contains ViewModels (HeadlinesViewModel, ArticleDetailsViewModel), ViewData (HeadlineItemViewData, Topic, mappers), Views (HeadlinesView, ArticleRow, ArticleDetailsView).
-	•	Common: Shared utilities like DependencyContainer and error presentation.
-	•	ScreenState: Represents UI state (idle, loading, loaded, error) to drive SwiftUI rendering.
-	•	Resources: Assets, fonts, and localized strings (English/Arabic).
-	•	Configs: Build configuration (.xcconfig).
-	•	Tests: Unit tests (model decoding, ViewModel state transitions, service URLs) and UI tests.
+	-	**Data Layer**
+	-	**RemoteDataSources**: Handles networking via URLSessionAPIClient, API config, endpoints, token management, and DTOs (ArticleResponseDTO).
+	-	**Repositories**: Implement repository protocols to mediate between Data and Domain.
+	-	**Errors**: Define network/service-level errors (NewsServiceError).
+	-	**Domain Layer**
+	-	**Entities**: Core business models like Article.
+	-	**Errors**: Domain-specific errors (DomainError).
+	-	**Protocols**: Abstractions for data sources, repositories, and use cases.
+	-	**UseCases**: Application-specific business rules (TopHeadlinesUseCase, SearchArticlesUseCase).
+	-	**Presentation Layer (MVVM + SwiftUI)**
+	-	**Scenes**: Grouped by feature.
+	-	**Headlines**: Contains ViewModels (HeadlinesViewModel, ArticleDetailsViewModel), ViewData (HeadlineItemViewData, Topic, mappers), Views (HeadlinesView, ArticleRow, ArticleDetailsView).
+	-	**Common**: Shared utilities like DependencyContainer and error presentation.
+	-	**ScreenState**: Represents UI state (idle, loading, loaded, error) to drive SwiftUI rendering.
+	-	**Resources**: Assets, fonts, and localized strings (English/Arabic).
+	-	**Configs**: Build configuration (.xcconfig).
+	-	**Tests**: Unit tests (model decoding, ViewModel state transitions, service URLs) and UI tests.
 
 ---
 
