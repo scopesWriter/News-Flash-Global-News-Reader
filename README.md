@@ -43,46 +43,106 @@ Add your screenshots here (place them in `Resources/Assets.xcassets` or embed li
 
 ```text
 NewsFlash/
-  NewsFlash/
-    ArticleDetails/
-      ArticleDetail.swift
-    Headlines/
-      HeadlinesView.swift
-      HeadlinesViewModel.swift
-    Models/
-      Article.swift
-    Services/
-      NewsService.swift
-    Views/
-      ArticleRow.swift
-    Resources/
-      Assets.xcassets/
-      Fonts/
-      en.lproj/Localizable.strings
-      ar.lproj/Localizable.strings
-    Configs/
-      Debug.xcconfig
-    NewsFlashApp.swift
-    Info.plist
-  NewsFlashTests/
-    ArticlesDecodingTests.swift
-    HeadlinesViewModelTests.swift
-    NewsServiceURLTests.swift
-  NewsFlashUITests/
-    NewsFlashUITests.swift
-    NewsFlashUITestsLaunchTests.swift
+  Data/                          # Data Layer
+    LocalDataSources/            # (future) persistence or cache
+    RemoteDataSources/           # Networking layer
+      DTO/                       # Data Transfer Objects
+        ArticleResponseDTO.swift
+      APIConfig.swift
+      APIEndpoint.swift
+      NewsServiceError.swift
+      TokenProvider.swift
+      URLSessionAPIClient.swift
+    Repositories/
+      NewsRepository.swift       # Implements Domain repository protocols
+
+  Domain/                        # Domain Layer (business rules)
+    Entities/
+      Article.swift               # Core domain entity
+    Errors/
+      DomainError.swift
+    Protocols/
+      DataSourceProtocols/
+        NewsAPIClientProtocol.swift
+      RepositoryProtocols/
+        NewsRepositoryProtocol.swift
+      UseCaseProtocols/
+        SearchArticleUseCaseProtocol.swift
+        TopHeadlinesUseCaseProtocol.swift
+    UseCases/
+      SearchArticlesUseCase.swift
+      TopHeadlinesUseCase.swift
+
+  Presentation/                  # Presentation Layer (MVVM + SwiftUI)
+    Scenes/
+      Common/
+        Errors/                  # Presentation error mapping
+        DependencyContainer.swift
+      Headlines/
+        ViewData/
+          HeadlineItemViewData.swift
+          HeadlinesItemViewDataMapper.swift
+          Topic.swift
+        ViewModels/
+          ArticleDetailsViewModel.swift
+          HeadlinesViewModel.swift
+          ScreenState.swift
+        Views/
+          ArticleDetailsView.swift
+          ArticleRow.swift
+
+  Resources/
+    Assets.xcassets/
+    Fonts/
+    en.lproj/Localizable.strings
+    ar.lproj/Localizable.strings
+
+  Configs/
+    Debug.xcconfig
+
+  NewsFlashApp.swift              # App entry point
+  Info.plist
+
+  Tests/
+    NewsFlashTests/
+      ArticlesDecodingTests.swift
+      HeadlinesViewModelTests.swift
+      NewsServiceURLTests.swift
+    NewsFlashUITests/
+      NewsFlashUITests.swift
+      NewsFlashUITestsLaunchTests.swift
 ```
 
 ---
 
 ### 🏢 Architecture
 
-- **Models**: Data structures like `Article`.
-- **Views (SwiftUI)**: `HeadlinesView`, `ArticleRow`, `ArticleDetail`.
-- **ViewModels (MVVM)**: `HeadlinesViewModel` handles state, transforms service data for views.
-- **Services**: `NewsService` performs networking and data fetching.
+<img width="808" height="394" alt="Screenshot 2025-09-06 at 7 35 13 PM" src="https://github.com/user-attachments/assets/252c2ab9-1f60-4ca9-b4fc-7132ef30ea1a" />
 
-Data flow: View triggers intent → ViewModel requests data from Service → Service returns domain models → ViewModel publishes state → View renders reactively.
+The project follows Clean Architecture with MVVM at the presentation layer:
+	•	Data Layer
+	•	RemoteDataSources: Handles networking via URLSessionAPIClient, API config, endpoints, token management, and DTOs (ArticleResponseDTO).
+	•	Repositories: Implement repository protocols to mediate between Data and Domain.
+	•	Errors: Define network/service-level errors (NewsServiceError).
+	•	Domain Layer
+	•	Entities: Core business models like Article.
+	•	Errors: Domain-specific errors (DomainError).
+	•	Protocols: Abstractions for data sources, repositories, and use cases.
+	•	UseCases: Application-specific business rules (TopHeadlinesUseCase, SearchArticlesUseCase).
+	•	Presentation Layer (MVVM + SwiftUI)
+	•	Scenes: Grouped by feature.
+	•	Headlines: Contains ViewModels (HeadlinesViewModel, ArticleDetailsViewModel), ViewData (HeadlineItemViewData, Topic, mappers), Views (HeadlinesView, ArticleRow, ArticleDetailsView).
+	•	Common: Shared utilities like DependencyContainer and error presentation.
+	•	ScreenState: Represents UI state (idle, loading, loaded, error) to drive SwiftUI rendering.
+	•	Resources: Assets, fonts, and localized strings (English/Arabic).
+	•	Configs: Build configuration (.xcconfig).
+	•	Tests: Unit tests (model decoding, ViewModel state transitions, service URLs) and UI tests.
+
+---
+
+### 🔄 Data flow:
+View (user action) → ViewModel (intent → use case) → UseCase (business logic) → Repository → DataSource (API/Local) → back up → ViewModel (state) → View (render).
+<img width="960" height="329" alt="iOS Clean Architecture" src="https://github.com/user-attachments/assets/58c76755-034e-4b65-bf76-0c1e672ab9d2" />
 
 ---
 
